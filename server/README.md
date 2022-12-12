@@ -8,6 +8,8 @@
 # Step 4: on terminal "node index.js" will give "server is running" then ctrl c to exit
 # Step 5: Inorder to let server run continously.. edit package.json and add scripts;
 # Step 6: On terminal npm start to run server
- 
+# Step 7: install socket io client version from terminal
+npm add socket.io-client
+
 
     

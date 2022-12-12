@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import io from "socket.io-client";
+// eslint-disable-next-line
+const socket = io.connect("http://localhost:3001");
 
 function App() {
+    const sendMessage = () => {
+        //console.log("Message is Sent");
+        // install socket io client version from terminal "npm add socket.io-client"
+        //socket.emit(); // send to backend and then it will send message to frontend.
+
+    };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <input placeholder="Message" />
+        <button onClick={sendMessage}>Send Message</button>
     </div>
   );
 }
