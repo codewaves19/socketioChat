@@ -10,6 +10,9 @@
 # Step 6: On terminal npm start to run server
 # Step 7: install socket io client version from terminal
 npm add socket.io-client
+# Step 8: Frontend or client react app, 
+import io from "socket.io-client";
+const socket = io.connect("http://localhost:3001");
 
 
     
