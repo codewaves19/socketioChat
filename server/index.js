@@ -17,8 +17,14 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
+
+  socket.on("join_room", (data) => {
+    //console.log(data);
+    socket.join(data);
+  });
+  
   socket.on("send_message", (data) => {
-    console.log(data);
+    //console.log(data);
     socket.broadcast.emit("recieve_message", data)
   });
 });
@@ -26,9 +32,3 @@ io.on("connection", (socket) => {
 server.listen(3001, () => {
     console.log("Server is running");
 });
-
-
-
-
-
- 

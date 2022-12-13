@@ -5,12 +5,24 @@ import { useEffect, useState } from 'react';
 const socket = io.connect("http://localhost:3001");
 
 function App() {
+    const [ room, setRoom ] = useState("");
     const [ message, setMessage ] = useState(""); // to read message typed by user
     const [ messageReceived, setMessageReceived ] = useState("");
+
     const sendMessage = () => {
         //console.log("Message is Sent");
         // install socket io client version from terminal "npm add socket.io-client"
-        socket.emit("send_message", {message: message}); // send to backend and then it will send message to frontend.
+        if (message !== "") {
+            socket.emit("send_message", {message, room}); // send to backend and then it will send message to frontend.
+        }
+
+    };
+    const joinRoom = (data) => {
+        //console.log("Message is Sent");
+        // install socket io client version from terminal "npm add socket.io-client"
+        if (room !== "") {
+            socket.emit("join_room", data); // send to backend and then it will send message to frontend.
+        }
 
     };
     // useEffect will work when ever socket io get data message
@@ -23,6 +35,10 @@ function App() {
 
   return (
     <div className="App">
+        <input placeholder="Room number..." onChange = {(event) => {
+             setRoom(event.target.value);
+        }}/>
+        <button onClick={joinRoom}>Join Room</button>
         <input placeholder="Message" onChange = {(event) => {
              setMessage(event.target.value);
         }}/>
